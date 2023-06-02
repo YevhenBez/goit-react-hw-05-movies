@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchTrendingMovies } from '../fetchMovies';
+import { fetchTrendingMovies } from '../../fetchMovies';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -8,8 +8,16 @@ const Home = () => {
     
 
     useEffect(() => {
-        if (!data.length) fetchTrendingMovies(setData)
-   }, [data]);
+const getTrendingMovies = async () => {
+        try {
+          const { results } = await fetchTrendingMovies();
+          setData([...results]);
+        } catch (error) {
+         console.log('Error')
+        }
+      };
+      getTrendingMovies();
+   }, []);
 
   return (
     <main>
