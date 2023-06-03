@@ -16,3 +16,10 @@ export const fetchMovieById = async id => {
   const { data } = await axios.get(`${API_URL}movie/${id}?api_key=${API_KEY}`);
   return data;
 };
+
+export const fetchCast = async id => {
+  const { data } = await axios.get(
+    `${API_URL}movie/${id}/credits?api_key=${API_KEY}`
+  );
+  return data;
+};
