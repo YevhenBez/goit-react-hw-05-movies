@@ -29,7 +29,7 @@ const MovieDetails = () => {
     ? `(${dataMovieById.release_date.slice(0, 4)})`
     : '';
 
-  console.log(dataMovieById);
+//   console.log(dataMovieById);
 
   return (
     <>
