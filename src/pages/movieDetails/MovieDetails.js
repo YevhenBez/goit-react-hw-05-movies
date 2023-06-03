@@ -1,7 +1,7 @@
 import React from 'react';
 import { fetchMovieById } from '../../fetchMovies';
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import css from './css/movieDetails.module.css';
 
 const MovieDetails = () => {
@@ -60,6 +60,18 @@ const MovieDetails = () => {
             </div>
           </>
         )}
+      </div>
+      <div>
+        <h4>Additional information</h4>
+        <ul>
+          <Link to={`cast`}>
+            <li>Cast</li>
+          </Link>
+          <Link to={`reviews`}>
+            <li>Reviews</li>
+          </Link>
+        </ul>
+        <Outlet />
       </div>
     </>
   );

@@ -4,6 +4,8 @@ import Home from '../pages/home/Home';
 import Movies from '../pages/movies/Movies';
 import MovieDetails from '../pages/movieDetails/MovieDetails';
 import Layout from './layout/Layout';
+import Cast from './cast/Cast';
+import Reviews from './reviews/Reviews';
 
 const App = () => {
   return (
@@ -20,9 +22,12 @@ const App = () => {
       {/* React homework template */}
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<Home/>}/>
+          <Route index element={<Home />} />
           <Route path="movies" element={<Movies />} />
-          <Route path="movies/:movieId" element={<MovieDetails />} />
+          <Route path="movies/:movieId" element={<MovieDetails />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
         </Route>
       </Routes>
     </div>
