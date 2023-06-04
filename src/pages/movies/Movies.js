@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams, useLocation } from 'react-router-dom';
 import { fetchSearchMovie } from '../../fetchMovies';
 
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const eventname = searchParams.get('eventname');
+    const eventname = searchParams.get('eventname');
+    
+    const urlMoviesLocation = useLocation();
 
   useEffect(() => {
     if (eventname === '' || eventname === null) return;
@@ -38,7 +40,7 @@ const Movies = () => {
       <ul>
         {searchMovies.map(({ title, id }) => (
           <li key={id}>
-            <Link to={`/movies/${id}`}>{title}</Link>
+            <Link to={`/movies/${id}`} state={{ from: urlMoviesLocation }}>{title}</Link>
           </li>
         ))}
       </ul>
