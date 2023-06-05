@@ -1,16 +1,16 @@
 import React from 'react';
 import { fetchMovieById } from '../../fetchMovies';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import css from './css/movieDetails.module.css';
-import ButtonBack from "../../components/buttonBack/ButtonBack";
+import ButtonBack from '../../components/buttonBack/ButtonBack';
 
 const MovieDetails = () => {
   const [dataMovieById, setDataMovieById] = useState(null);
-    const { movieId } = useParams();
-    const urlLocation = useLocation();
+  const { movieId } = useParams();
+  const urlLocation = useLocation();
 
-    console.log(urlLocation);
+  console.log(urlLocation);
 
   useEffect(() => {
     const getMoviesById = async movieId => {
@@ -33,11 +33,13 @@ const MovieDetails = () => {
     ? `(${dataMovieById.release_date.slice(0, 4)})`
     : '';
 
-//   console.log(dataMovieById);
+  //   console.log(dataMovieById);
 
   return (
-      <>
-          <Link to={urlLocation.state ? urlLocation.state.from  : '/movies'}><ButtonBack /></Link>
+    <>
+      <Link to={urlLocation.state ? urlLocation.state.from : '/movies'}>
+        <ButtonBack />
+      </Link>
       <div className={css.movieDetailsStyled}>
         {dataMovieById && (
           <>
@@ -69,14 +71,26 @@ const MovieDetails = () => {
       <div>
         <h4>Additional information</h4>
         <ul>
-          <Link to={`cast`} state={{from: urlLocation.state ? urlLocation.state.from  :'/movies'}}>
+          <Link
+            to={`cast`}
+            state={{
+              from: urlLocation.state ? urlLocation.state.from : '/movies',
+            }}
+          >
             <li>Cast</li>
           </Link>
-          <Link to={`reviews`} state={{from: urlLocation.state ? urlLocation.state.from  :'/movies'}}>
+          <Link
+            to={`reviews`}
+            state={{
+              from: urlLocation.state ? urlLocation.state.from : '/movies',
+            }}
+          >
             <li>Reviews</li>
           </Link>
         </ul>
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </div>
     </>
   );

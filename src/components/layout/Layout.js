@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import css from './css/layout.module.css';
+import { Suspense } from 'react';
 
 const Layout = () => {
   return (
@@ -17,7 +18,7 @@ const Layout = () => {
           </ul>
         </nav>
       </header>
-      <Outlet />
+      <Suspense><Outlet /></Suspense>
     </>
   );
 };
