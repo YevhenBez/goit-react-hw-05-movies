@@ -5,9 +5,9 @@ import { fetchSearchMovie } from '../../fetchMovies';
 const Movies = () => {
   const [searchMovies, setSearchMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-    const eventname = searchParams.get('eventname');
-    
-    const urlMoviesLocation = useLocation();
+  const eventname = searchParams.get('eventname');
+
+  const urlMoviesLocation = useLocation();
 
   useEffect(() => {
     if (eventname === '' || eventname === null) return;
@@ -40,7 +40,9 @@ const Movies = () => {
       <ul>
         {searchMovies.map(({ title, id }) => (
           <li key={id}>
-            <Link to={`/movies/${id}`} state={{ from: urlMoviesLocation }}>{title}</Link>
+            <Link to={`/movies/${id}`} state={{ from: urlMoviesLocation }}>
+              {title}
+            </Link>
           </li>
         ))}
       </ul>

@@ -4,20 +4,20 @@ import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 const Home = () => {
-    const [data, setData] = useState([]);
-    const urlHomeLocation = useLocation();
+  const [data, setData] = useState([]);
+  const urlHomeLocation = useLocation();
 
-    useEffect(() => {
-const getTrendingMovies = async () => {
-        try {
-          const { results } = await fetchTrendingMovies();
-          setData([...results]);
-        } catch (error) {
-         console.log('Error')
-        }
-      };
-      getTrendingMovies();
-   }, []);
+  useEffect(() => {
+    const getTrendingMovies = async () => {
+      try {
+        const { results } = await fetchTrendingMovies();
+        setData([...results]);
+      } catch (error) {
+        console.log('Error');
+      }
+    };
+    getTrendingMovies();
+  }, []);
 
   return (
     <main>
@@ -26,7 +26,9 @@ const getTrendingMovies = async () => {
         {data &&
           data.map(({ title, id }) => (
             <li key={id}>
-              <Link to={`/movies/${id}`} state={{ from: urlHomeLocation }} >{title}</Link>
+              <Link to={`/movies/${id}`} state={{ from: urlHomeLocation }}>
+                {title}
+              </Link>
             </li>
           ))}
       </ul>

@@ -10,15 +10,21 @@ const Layout = () => {
         <nav>
           <ul className={css.ul}>
             <li>
-              <NavLink to="/" className={css.navLink}>Home</NavLink>
+              <NavLink to="/" className={css.navLink}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to="/movies" className={css.navLink}>Movies</NavLink>
+              <NavLink to="/movies" className={css.navLink}>
+                Movies
+              </NavLink>
             </li>
           </ul>
         </nav>
       </header>
-      <Suspense><Outlet /></Suspense>
+      <Suspense>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
