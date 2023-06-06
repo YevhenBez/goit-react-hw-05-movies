@@ -28,7 +28,7 @@
     color: green;
   }
 
-    &:global.active {
+  &:global.active {
     color: orange;
   }
 }
